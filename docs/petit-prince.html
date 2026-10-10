@@ -1,0 +1,1092 @@
+<style id="tp-md-references-styles" data-tp-markdown-style="tp-md-references-styles">
+.tp-md-reference-link {
+  position: relative;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.tp-md-note-ref-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.tp-md-note-ref {
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.tp-md-note-ref .tp-md-reference-link {
+  text-decoration: none;
+}
+
+.tp-md-reference-tooltip {
+  position: fixed;
+  z-index: 1000;
+
+  display: none;
+
+  inline-size: max-content;
+  max-inline-size: min(32rem, calc(100vw - 2rem));
+  max-block-size: calc(100vh - 2rem);
+
+  overflow: auto;
+
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: normal;
+
+  background: Canvas;
+  color: CanvasText;
+
+  border: 1px solid
+    color-mix(in srgb, CanvasText 20%, transparent);
+
+  box-shadow:
+    0 0.5rem 1.5rem rgb(0 0 0 / 0.2);
+
+  white-space: normal;
+  overflow-wrap: break-word;
+
+  text-align: start;
+
+  pointer-events: none;
+}
+
+.tp-md-reference-tooltip[data-open='true'] {
+  display: block;
+}
+
+.tp-md-reference-link:hover .tp-md-reference-tooltip,
+.tp-md-reference-link:focus .tp-md-reference-tooltip,
+.tp-md-note-ref-wrap:hover > .tp-md-reference-tooltip,
+.tp-md-note-ref-wrap:focus-within > .tp-md-reference-tooltip,
+.tp-md-reference-tooltip[data-open='true'] {
+  display: block;
+}
+
+.tp-md-reference-tooltip p {
+  margin-block: 0.5rem;
+}
+
+.tp-md-reference-tooltip p:first-child {
+  margin-block-start: 0;
+}
+
+.tp-md-reference-tooltip p:last-child {
+  margin-block-end: 0;
+}
+
+.tp-md-bibliography,
+.tp-md-glossary,
+.tp-md-notes {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+  align-items: start;
+}
+
+.tp-md-bibliography dt,
+.tp-md-glossary dt,
+.tp-md-notes dt,
+.tp-md-bibliography dd,
+.tp-md-glossary dd,
+.tp-md-notes dd {
+  margin: 0;
+}
+
+.tp-md-bibliography dt,
+.tp-md-glossary dt,
+.tp-md-notes dt {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tp-md-bibliography dd,
+.tp-md-glossary dd,
+.tp-md-notes dd {
+  min-inline-size: 0;
+}
+
+.tp-md-bibliography dd > :first-child,
+.tp-md-glossary dd > :first-child,
+.tp-md-notes dd > :first-child {
+  margin-block-start: 0;
+}
+
+.tp-md-bibliography dd > :last-child,
+.tp-md-glossary dd > :last-child,
+.tp-md-notes dd > :last-child {
+  margin-block-end: 0;
+}
+
+.tp-md-index dl {
+  margin: 0;
+}
+
+.tp-md-index dt {
+  font-weight: 600;
+}
+
+.tp-md-index dd {
+  margin-inline-start: 1.5rem;
+}
+
+.tp-md-index a {
+  text-decoration: none;
+}
+
+.tp-md-index-link {
+  position: relative;
+  font-weight: 400;
+}
+
+.tp-md-index-tooltip {
+  position: fixed;
+  z-index: 1000;
+  display: none;
+
+  inline-size: max-content;
+  max-inline-size: min(40rem, calc(100vw - 2rem));
+  max-block-size: calc(100vh - 2rem);
+
+  overflow: auto;
+  padding: 0.75rem;
+  border: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+  border-radius: 0.5rem;
+
+  background: Canvas;
+  color: CanvasText;
+
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.2);
+}
+
+.tp-md-index-tooltip[data-open='true'] {
+  display: block;
+}
+
+.tp-md-index-tooltip [data-tp-md-index-preview] {
+  max-block-size: 20rem;
+  overflow: hidden;
+}
+
+/* listof */
+.tp-md-listof {
+  margin-block: 1rem;
+}
+
+.tp-md-listof-list {
+  margin-block: 0;
+}
+
+.tp-md-listof-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.tp-md-listof-tooltip {
+  position: fixed;
+  z-index: 1000;
+  display: none;
+
+  inline-size: max-content;
+  max-inline-size: min(40rem, calc(100vw - 2rem));
+  max-block-size: calc(100vh - 2rem);
+
+  overflow: auto;
+  overscroll-behavior: contain;
+
+  padding: 0.75rem;
+  border: 1px solid
+    color-mix(in srgb, CanvasText 20%, transparent);
+  border-radius: 0.5rem;
+
+  background: Canvas;
+  color: CanvasText;
+
+  box-shadow:
+    0 0.5rem 1.5rem rgb(0 0 0 / 0.2);
+}
+
+.tp-md-listof-tooltip table {
+  max-inline-size: 100%;
+}
+
+.tp-md-listof-tooltip :is(table, pre, code) {
+  overflow: auto;
+}
+
+.tp-md-listof-tooltip[data-open='true'] {
+  display: block;
+}
+
+.tp-md-listof-tooltip [data-tp-md-listof-preview] {
+  max-block-size: 20rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.tp-md-listof-tooltip [data-tp-md-listof-preview]::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 3rem;
+  background: linear-gradient(transparent, Canvas);
+  pointer-events: none;
+}
+</style>
+<style id="tp-md-page-nav-styles" data-tp-markdown-style="tp-md-page-nav-styles">
+.tp-md-page-nav {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+
+  gap: 1rem;
+  align-items: center;
+
+  margin-block-start: 3rem;
+  padding-block-start: 1rem;
+
+  border-block-start:
+    1px solid
+    color-mix(
+      in srgb,
+      CanvasText 15%,
+      transparent
+    );
+}
+
+.tp-md-page-nav a {
+  text-decoration: none;
+}
+
+.tp-md-page-nav-prev {
+  justify-self: start;
+}
+
+.tp-md-page-nav-top {
+  justify-self: center;
+}
+
+.tp-md-page-nav-next {
+  justify-self: end;
+  text-align: end;
+}
+
+.tp-md-page-nav-placeholder {
+  min-inline-size: 0;
+}
+</style>
+<style id="tp-md-toc-styles" data-tp-markdown-style="tp-md-toc-styles">
+details[data-markdown-toc] {
+  background: color-mix(in srgb, Canvas 94%, CanvasText 6%);
+  border: 1px solid color-mix(in srgb, CanvasText 12%, transparent);
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 20;
+}
+
+details[data-markdown-toc] ul {
+  margin-block: 0;
+}
+
+details[data-markdown-toc] li {
+  margin-block: 0.1rem;
+}
+
+details[data-markdown-toc] ul[data-toc-numbered] {
+  list-style: none;
+  padding-inline-start: 1rem;
+}
+
+details[data-markdown-toc] ul[data-toc-numbered] ul[data-toc-numbered] {
+  padding-inline-start: 1rem;
+}
+
+.tp-md-toc-aside[data-markdown-toc-position='end'] {
+  float: inline-end;
+  inline-size: min(18rem, 35%);
+  margin-inline-start: 1rem;
+  margin-block: 0 1rem;
+  border-left: none;
+  position: relative;
+  z-index: 20;
+}
+
+.tp-md-toc-aside[data-markdown-toc-position='end'] details[data-markdown-toc] {
+  position: sticky;
+  inset-block-start: 1rem;
+  z-index: 20;
+}
+
+.tp-md-toc-aside[data-markdown-toc-position='end'] details[data-markdown-toc][open] {
+  z-index: 100;
+}
+
+@media (max-width: 60rem) {
+  .tp-md-toc-aside[data-markdown-toc-position='end'] {
+    float: none;
+    inline-size: auto;
+    margin-inline-start: 0;
+  }
+
+  .tp-md-toc-aside[data-markdown-toc-position='end'] details[data-markdown-toc] {
+    position: static;
+  }
+}
+</style>
+<style id="tp-md-layout-styles" data-tp-markdown-style="tp-md-layout-styles">
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--layout-space, 0.5rem);
+}
+
+.stack > * {
+  margin-block: 0;
+}
+
+.stack > * + * {
+  margin-block-start: var(--layout-space, 0.5rem);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-space, 0.5rem);
+  justify-content: var(--cluster-justify, flex-start);
+  align-items: var(--cluster-align, center);
+}
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-space, 0.5rem);
+  --switcher-limit: attr(limit number, 2);
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--switcher-threshold, 40rem) - 100%) * 999);
+}
+
+
+.switcher > tp-l-system {
+  flex: 1 1 18rem;
+  min-inline-size: 0;
+}
+
+.switcher > tp-l-system .tp-l-system-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* important */
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  inline-size: 100%;
+}
+
+.switcher > tp-l-system .tp-l-system-svg,
+.switcher > tp-l-system svg {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+
+.switcher.feature-list > article {
+  flex: 0 0 250px;
+}
+.switcher.code-list > article {
+  flex: 0 0 400px;
+}
+
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-space, 0.5rem);
+}
+
+.sidebar > :first-child {
+  flex-basis: var(--sidebar-width, 10rem);
+  flex-grow: 1;
+}
+
+.sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: var(--sidebar-content-min, 70%);
+}
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  min-block-size: var(--cover-min-block-size, 100vh);
+  padding: var(--cover-padding, 1rem);
+}
+
+.cover > * {
+  margin-block: var(--layout-space, 0.5rem);
+}
+
+.cover > :first-child:not(.centered) {
+  margin-block-start: 0;
+}
+
+.cover > :last-child:not(.centered) {
+  margin-block-end: 0;
+}
+
+.cover > .centered {
+  margin-block: auto;
+}
+
+.center {
+  box-sizing: content-box;
+  max-inline-size: var(--center-max-inline-size, 60rem);
+  margin-inline: auto;
+  padding-inline: var(--center-padding, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--layout-space, 0.5rem);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(var(--grid-min, 16rem), 100%), 1fr)
+  );
+}
+
+.reel {
+  display: flex;
+  gap: var(--layout-space, 0.5rem);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-color: currentColor transparent;
+}
+
+.reel > * {
+  flex: 0 0 var(--reel-item-width, auto);
+}
+
+.reel > img {
+  block-size: 100%;
+  flex-basis: auto;
+  width: auto;
+}
+
+.reel > * + * {
+  margin-inline-start: 1rem;
+}
+
+.reel.overflowing {
+  padding-block-end: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-space, 0.5rem);
+  padding: var(--card-padding, 1rem);
+  border: var(--card-border, 1px solid color-mix(in srgb, CanvasText 18%, transparent));
+  border-radius: var(--card-radius, 0.75rem);
+  background: var(--card-background, Canvas);
+  color: var(--card-color, CanvasText);
+}
+
+.card > :first-child {
+  margin-block-start: 0;
+}
+
+.card > :last-child {
+  margin-block-end: 0;
+}
+</style>
+<style id="tp-md-tables-styles" data-tp-markdown-style="tp-md-tables-styles">
+.tp-md-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  margin-block: 1rem;
+}
+
+.tp-md-table th,
+.tp-md-table td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid color-mix(in srgb, CanvasText 18%, transparent);
+  text-align: start;
+  vertical-align: top;
+}
+
+.tp-md-table th {
+  font-weight: 700;
+  background: color-mix(in srgb, CanvasText 8%, Canvas);
+}
+
+.tp-md-table tbody tr:nth-child(even) {
+  background: color-mix(in srgb, CanvasText 4%, Canvas);
+}
+
+.tp-md-table td.tp-md-table-number {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.tp-md-block-table :where(th, td) > :first-child,
+.tp-md-list-table :where(th, td) > :first-child,
+.tp-md-table :where(td, th) > :first-child {
+  margin-block-start: 0;
+}
+
+.tp-md-block-table :where(th, td) > :last-child,
+.tp-md-list-table :where(th, td) > :last-child,
+.tp-md-table :where(td, th) > :last-child {
+  margin-block-end: 0;
+}
+
+.tp-md-table :where(td, th) :where(ul, ol) {
+  padding-inline-start: 1.5rem;
+  margin-block: 0.5rem;
+}
+
+.tp-md-table :where(td, th) :where(ul, ol) :where(ul, ol) {
+  margin-block: 0.25rem;
+}
+
+table.tp-md-table.tp-md-list-table td ul,
+table.tp-md-table.tp-md-list-table td ol,
+table.tp-md-table.tp-md-list-table th ul,
+table.tp-md-table.tp-md-list-table th ol {
+  list-style-position: outside;
+  padding-inline-start: 2rem;
+  margin-inline-start: 0;
+}
+
+table.tp-md-table.tp-md-list-table td li,
+table.tp-md-table.tp-md-list-table th li {
+  display: list-item;
+  margin-inline-start: 0;
+}
+
+table.tp-md-table.tp-md-list-table td,
+table.tp-md-table.tp-md-list-table th {
+  overflow: visible;
+}
+</style>
+<style id="tp-md-mdviewer-styles" data-tp-markdown-style="tp-md-mdviewer-styles">
+.tp-md-mdviewer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.5rem;
+  margin-block: 1rem;
+  overflow: visible;
+}
+
+.tp-md-mdviewer-toolbar {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: end;
+  margin-block-end: 0;
+}
+
+.tp-md-mdviewer-toolbar label,
+.tp-md-mdviewer-start-controls label {
+  display: grid;
+  gap: 0.15rem;
+  margin: 0;
+}
+
+.tp-md-mdviewer-toolbar select,
+.tp-md-mdviewer-start-controls select {
+  width: 100%;
+  height: 2.25rem;
+  box-sizing: border-box;
+}
+
+.tp-md-mdviewer-start,
+.tp-md-mdviewer-end,
+.tp-md-mdviewer-source-output,
+.tp-md-mdviewer-output {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.tp-md-mdviewer-start {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  border: 1px solid #d0d7de;
+  border-radius: 0.75rem;
+  background: #fff;
+  overflow: hidden;
+  padding: 0.5rem;
+}
+
+.tp-md-mdviewer-start-controls:empty {
+  display: none;
+}
+
+.tp-md-mdviewer-end {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  border: 1px solid #d0d7de;
+  border-radius: 0.75rem;
+  background: #fff;
+  overflow: hidden;
+  padding: 0.5rem;
+  & section {
+    margin: 0;
+  }
+}
+
+.tp-md-mdviewer pre {
+  max-inline-size: 100%;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  border-radius: 0.75rem;
+}
+
+.tp-md-mdviewer pre,
+.tp-md-mdviewer code {
+  white-space: pre;
+}
+
+.tp-md-mdviewer pre code {
+  display: block;
+  min-inline-size: max-content;
+  white-space: inherit;
+}
+
+.tp-md-mdviewer-output > pre,
+.tp-md-mdviewer-output pre {
+  max-block-size: none;
+  block-size: auto;
+  height: auto;
+}
+
+.tp-md-mdviewer[data-mdviewer-layout='source'] {
+  grid-template-columns: 1fr;
+}
+
+.tp-md-mdviewer[data-mdviewer-layout='source'] .tp-md-mdviewer-end {
+  display: none;
+}
+
+.tp-md-mdviewer[data-mdviewer-layout='output'] {
+  grid-template-columns: 1fr;
+}
+
+.tp-md-mdviewer[data-mdviewer-layout='output'] .tp-md-mdviewer-start {
+  display: none;
+}
+
+@media (max-width: 60rem) {
+  .tp-md-mdviewer {
+    grid-template-columns: 1fr;
+  }
+
+  .tp-md-mdviewer-toolbar {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+<style id="tp-md-example-styles" data-tp-markdown-style="tp-md-example-styles">
+.tp-md-example {
+  display: block;
+
+  margin-block: 1rem;
+  padding: 1rem;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      CanvasText 18%,
+      transparent
+    );
+
+  border-radius: 0.75rem;
+
+  background:
+    color-mix(
+      in srgb,
+      CanvasText 6%,
+      Canvas
+    );
+}
+
+.tp-md-example-label {
+  margin-block-end: 0.75rem;
+
+  color:
+    color-mix(
+      in srgb,
+      CanvasText 75%,
+      transparent
+    );
+
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.tp-md-example-content > :first-child {
+  margin-block-start: 0;
+}
+
+.tp-md-example-content > :last-child {
+  margin-block-end: 0;
+}
+</style>
+<style id="tp-md-tabs-styles" data-tp-markdown-style="tp-md-tabs-styles">
+.tp-md-tabs {
+  --tp-md-tabs-border-color: var(--tp-tabs-border-color, var(--tp-neutral-stroke-soft));
+  --tp-md-tabs-border-selected-color: var(--tp-tabs-border-selected-color, var(--tp-brand-stroke-soft));
+  --tp-md-tabs-tab-bg: var(--tp-tabs-tab-bg, var(--tp-neutral-fill-softer));
+  --tp-md-tabs-tab-color: var(--tp-tabs-tab-color, var(--tp-text-body));
+  --tp-md-tabs-tab-selected-bg: var(--tp-tabs-tab-selected-bg, var(--tp-paper-color));
+  --tp-md-tabs-tab-selected-color: var(--tp-tabs-tab-selected-color, var(--tp-brand-seed));
+  --tp-md-tabs-panel-bg: var(--tp-tabs-panel-bg, var(--tp-paper-color));
+  display: block;
+  margin-block: 1rem;
+  min-inline-size: 0;
+  width: 100%;
+}
+
+.tp-md-tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  min-inline-size: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tp-md-tabs-tab {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-inline-size: 0;
+  min-block-size: 0;
+  margin: 0;
+  margin-inline-end: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--tp-md-tabs-border-color);
+  border-block-end: none;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: var(--tp-md-tabs-tab-bg);
+  color: var(--tp-md-tabs-tab-color);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tp-md-tabs-tab:last-child {
+  margin-inline-end: 0;
+}
+
+.tp-md-tabs-tab[aria-selected='true'] {
+  border-color: var(--tp-md-tabs-border-selected-color);
+  background: var(--tp-md-tabs-tab-selected-bg);
+  color: var(--tp-md-tabs-tab-selected-color);
+  font-weight: 600;
+}
+
+.tp-md-tabs-panel {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--tp-md-tabs-border-color);
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: var(--tp-md-tabs-panel-bg);
+}
+
+.tp-md-tabs-panel[hidden] {
+  display: none;
+}
+</style>
+<style id="tp-md-lists-styles" data-tp-markdown-style="tp-md-lists-styles">ul .tp-md-choice-list-item{list-style:none}.tp-md-choice-list-label{vertical-align:middle;align-items:center;gap:.5rem;line-height:1.4;display:inline-flex}.tp-md-choice-list-input{vertical-align:middle;flex:none;block-size:1rem;inline-size:1rem;margin:0}input[type=checkbox],input[type=radio]{transform-origin:50%;transform:scale(1.4)}.tp-md-list{margin:.5rem 0;padding-left:2.5rem}.tp-md-list-lower-alpha{list-style-type:lower-alpha}.tp-md-list-upper-alpha{list-style-type:upper-alpha}.tp-md-list-lower-roman{list-style-type:lower-roman}.tp-md-list-upper-roman{list-style-type:upper-roman}</style>
+<style id="tp-md-htmlviewer-styles" data-tp-markdown-style="tp-md-htmlviewer-styles">
+.tp-htmlviewer {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  margin: 1rem 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.tp-htmlviewer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.5rem;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  align-items: start;
+  justify-items: stretch;
+  overflow: visible;
+}
+
+.tp-htmlviewer-panel {
+  position: relative;
+  min-inline-size: 0;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  border: 1px solid var(--tp-neutral-stroke-soft);
+  border-radius: .75rem;
+  background: var(--tp-paper-color);
+  overflow: hidden;
+}
+
+.tp-htmlviewer-panel-code,
+.tp-htmlviewer-panel-preview {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.tp-htmlviewer-controls {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--tp-neutral-stroke-soft);
+}
+
+.tp-htmlviewer-controls label {
+  display: grid;
+  gap: 0.15rem;
+  margin-bottom: 0;
+}
+
+.tp-htmlviewer-controls select {
+  inline-size: 100%;
+  block-size: 2.5rem;
+  box-sizing: border-box;
+}
+
+.tp-htmlviewer-toolbar {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  z-index: 3;
+  display: flex;
+  gap: .375rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.tp-htmlviewer-copy-btn {
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  min-inline-size: 1.75rem;
+  min-block-size: 1.75rem;
+  padding: 0;
+  border-radius: .5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tp-neutral-on-paper-color, currentColor);
+  backdrop-filter: blur(2px);
+  opacity: .95;
+}
+
+.tp-htmlviewer-copy-btn svg {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.tp-htmlviewer-source-output,
+.tp-htmlviewer-output {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.tp-htmlviewer-source-output {
+  position: relative;
+}
+
+.tp-htmlviewer-source-output pre,
+.tp-htmlviewer-output pre {
+  max-inline-size: 100%;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  border-radius: 0.75rem;
+}
+
+.tp-htmlviewer-source-output pre code,
+.tp-htmlviewer-output pre code {
+  display: block;
+  min-inline-size: max-content;
+  white-space: pre;
+}
+
+.tp-htmlviewer-frame {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-block-size: 0;
+  border: 0;
+  background: var(--tp-paper-color);
+  border-radius: inherit;
+}
+
+.tp-htmlviewer-grid[data-htmlviewer-layout='source'] {
+  grid-template-columns: 1fr;
+}
+
+.tp-htmlviewer-grid[data-htmlviewer-layout='source'] .tp-htmlviewer-panel-preview {
+  display: none;
+}
+
+.tp-htmlviewer-grid[data-htmlviewer-layout='output'] {
+  grid-template-columns: 1fr;
+}
+
+.tp-htmlviewer-grid[data-htmlviewer-layout='output'] .tp-htmlviewer-source-output {
+  display: none;
+}
+
+@media (max-width: 60rem) {
+  .tp-htmlviewer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+<p>« Plus la flèche de ta colline (le gradient) est penchée et grande, plus la nature va courir vite en sens inverse pour tenter d’aplanir la colline. Ce grand élan de la nature pour tout remettre à plat, c’est le flux. »</p>
+<tp-xy-plot>
+  <script type="tp/xy-plot">
+    xyFunctionGraph
+      title "Colline"
+      x-axis [-PI/2, PI]
+      y-axis [-1, 1]
+      grid none
+      functions [
+        ["Colline", "sin(x)/4"],
+       ]
+      points [["A", -PI/2, -0.25, 10, 10], ["B", 0, 0], ["C", PI/2, 0.25]]
+  </script>
+</tp-xy-plot>
+<p>— Dessine-moi une dérivée, me dit-il un matin, alors que je tentais de réparer le carburateur de mon avion. </p>
+<p>Je levai les yeux, surpris. Le désert était immense et silencieux, et voilà que ce petit bonhomme aux cheveux d’or me demandait de lui dessiner un concept que les grandes personnes enferment d’ordinaire dans de lourds grimoires d’algèbre. </p>
+<p>— Une dérivée ? répétai-je. C’est un peu difficile à dessiner. Les grandes personnes aiment les nombres et les formules, elles écrivent cela avec des
+𝑓′</p>
+<p>(</p>
+<p>𝑥</p>
+<p>)
+et des limites qui tendent vers zéro… </p>
+<p>Il eut un petit rire agacé :
+— Je ne veux pas de nombres. Les nombres ne racontent rien sur les fleurs ou sur les renards. Dessine-moi une dérivée ! </p>
+<p>Alors, je pris une feuille de papier usée et mon crayon de rechange. Je ne savais pas dessiner les abstractions, alors je dessinai une simple ligne courbe, qui s’élevait doucement avant de redescendre, comme la crête d’une dune sous le vent. </p>
+<p>— Regarde, lui dis-je. C’est le chemin de ta vie, ou peut-être la courbe d’une colline sur ta planète. </p>
+<p>Il pencha sa tête blonde sur mon croquis, sérieux. </p>
+<p>— Ce n’est qu’une ligne, dit-il. Où est la dérivée ? </p>
+<p>Je posai la pointe de mon crayon sur la partie de la ligne qui grimpait vers le ciel. J’y traçai une petite flèche droite, une seule, qui effleurait la courbe en un point unique, comme un oiseau qui rase le sol sans jamais s’y poser. La flèche pointait fièrement vers le haut. </p>
+<p>— La voilà, murmurai-je. Ta colline te dit <em>où tu es</em>. Mais cette petite flèche, elle, te dit <em>où tu vas</em>. Elle ne s’occupe ni du passé, ni du futur lointain. Elle ne connaît que l’élan du pas suivant. C’est l’intention du voyage à cet instant précis. </p>
+<p>Le Petit Prince regarda la flèche, puis mon crayon.
+— Et si je marche sur le sommet de la colline ? Tout en haut ? </p>
+<p>Je déplaçai mon crayon sur la crête de la dune et je dessinai une nouvelle flèche. Celle-ci était parfaitement horizontale, posée en équilibre sur le sommet, parallèle au ciel. </p>
+<p>— Quand tu es tout en haut, le monde s’arrête de monter et n’a pas encore commencé à descendre. Pendant une fraction de seconde, la flèche est immobile. C’est une dérivée nulle. C’est le moment exact où tu te reposes, où tu regardes le paysage avant de choisir la suite. </p>
+<p>— Je connais ce moment, dit-il doucement. C’est le moment où le soleil se couche et où le ciel attend. </p>
+<p>Il pointa ensuite son petit doigt vers le versant qui redescendait, là où la courbe plongeait vers le bas de la feuille.
+— Et là ? </p>
+<p>Je traçai une dernière flèche, inclinée vers la terre.
+— Là, la flèche est triste. Elle regarde le sol. La dérivée est négative, car le chemin perd de sa hauteur. </p>
+<p>Le Petit Prince resta un long moment silencieux. Il regardait mes trois petites flèches qui changeaient de direction à chaque pas sur la colline. </p>
+<p>— Les grandes personnes croient qu’une chose est grande ou petite, finit-il par dire. Elles mesurent la hauteur de la colline. Mais elles ne regardent jamais la flèche. Ta dérivée, c’est le secret du mouvement. C’est la vitesse du cœur de la colline. </p>
+<p>— C’est exactement cela, acquiesçai-je, émerveillé par sa logique. </p>
+<p>— Merci, dit-il en reprenant sa feuille. Maintenant, dessine-moi un mouton pour tondre les herbes de ma colline. Mais dessine-le sur la flèche qui monte, pour qu’il ait du courage.</p>
+<h3 id="i.-la-plan%C3%A8te-de-terre-%3A-la-colline-immobile" tabindex="-1">I. La planète de terre : la colline immobile</h3>
+<p>La première planète était un astéroïde étrange, entièrement fait d’une terre brune et argileuse. Elle n’était composée que d’une immense montagne, si haute qu’elle semblait toucher les étoiles. Au pied de cette montagne vivait un géologue, un homme très sérieux qui mesurait l’altitude de chaque poignée de terre avec un théodolite en or. </p>
+<p>— Que fais-tu là ? lui demanda le Petit Prince.
+— Je cartographie les intensités du relief, répondit le géologue sans lever les yeux. Je consigne les altitudes. C’est une science fixe. Les choses sont ce qu’elles sont. Une montagne est haute, une vallée est basse.
+— Mais la terre ne bouge jamais ? demanda le Petit Prince. </p>
+<p>Le géologue haussa les épaules.
+— Pour qu’elle bouge, il faudrait un déséquilibre. Mais regarde, la pente est douce. </p>
+<p>Le Petit Prince s’approcha du flanc de la montagne. Il se souvint de la flèche de mon dessin. Il posa son petit doigt sur l’argile et traça une flèche imaginaire qui pointait vers le sommet. </p>
+<p>— Ta montagne a une direction, dit-il au géologue. Ta flèche montre la pente. Si je pose cette bille de verre ici, elle ne va pas rester immobile. Elle va suivre le chemin inverse de ma flèche. Elle va créer un courant de terre et de pierres pour rejoindre le bas.
+— C’est de la mécanique, grogna le géologue. Un simple déplacement de volume.
+— Non, dit le Petit Prince dans un sourire. C’est la terre qui est fatiguée d’être haute, et qui cherche le repos de la plaine. Ta flèche de pente crée le voyage de la pierre. </p>
+<p>Il laissa le géologue à ses calculs d’altitude. Il avait compris que même la terre la plus lourde obéissait à l’appel secret d’une pente. </p>
+<h3 id="ii.-la-plan%C3%A8te-de-feu-%3A-le-secret-du-po%C3%AAle" tabindex="-1">II. La planète de feu : le secret du poêle</h3>
+<p>La seconde planète appartenait à un allumeur de réverbères d’un genre nouveau. Son astéroïde était minuscule, mais il y régnait une chaleur étouffante. Au centre, un immense poêle en fonte rougeoyait, alimenté par un feu éternel. L’allumeur de réverbères passait son temps à courir du côté brûlant du poêle vers le côté glacial de l’astéroïde, là où l’espace infini refroidissait le sol. </p>
+<p>— C’est un travail terrible, soupira l’allumeur en s’essuyant le front. Plus le poêle est chaud, plus le froid de l’espace aspire ma chaleur. Je dois sans cesse courir pour équilibrer le feu.
+— Pourquoi la chaleur s’en va-t-elle ? demanda le Petit Prince.
+— Parce qu’elle n’aime pas être enfermée là où il y en a déjà trop ! Elle veut aller là où elle manque. </p>
+<p>Le Petit Prince s’assit prudemment à mi-chemin entre le chaud et le froid. Il ferma les yeux et sentit l’air picoter sa peau. Dans sa tête, il dessina une nouvelle flèche. Elle partait du désert de glace et pointait vers le poêle brûlant : c’était la flèche de la température, le gradient de feu. </p>
+<p>— Je comprends, murmura le Petit Prince. Ta flèche thermique montre le château du Roi Feu. Mais la chaleur, elle, est une voyageuse généreuse. Elle marche à reculons. Elle fuit le château pour aller consoler le vide et le froid.
+— C’est exactement cela ! dit l’allumeur. Et plus la différence entre le chaud et le froid est grande, plus la chaleur court vite. C’est un flux invisible qui me fatigue. </p>
+<p>Le Petit Prince pensa à sa rose, sur sa lointaine planète. La nuit, elle avait froid, et il devait lui mettre un globe de verre. Ce globe, comprit-il, servait simplement à briser la flèche, à ralentir le voyage de la chaleur pour que sa fleur reste tiède. </p>
+<h3 id="iii.-la-plan%C3%A8te-du-vent-%3A-le-grand-soupir" tabindex="-1">III. La planète du vent : le grand soupir</h3>
+<p>La troisième planète était la plus curieuse de toutes. On n’y voyait rien, car elle n’était faite que d’air. Mais cet air était en colère. Des tempêtes permanentes faisaient siffler les oreilles du Petit Prince, et ses cheveux d’or volaient dans tous les sens. Au centre de cette planète, un homme assis sur un soufflet géant ouvrait et fermait de grandes vannes en plastique. C’était le Régulateur Éolien. </p>
+<p>— Quel vacarme ! cria le Petit Prince pour couvrir le bruit de la tempête. Pourquoi fais-tu souffler ce vent ?
+— Ce n’est pas moi qui le fais souffler ! répondit l’homme en actionnant ses vannes. Ce sont mes deux hémisphères. À ma droite, j’ai une cage où l’air est serré, comprimé, étouffé sous une immense pression. À ma gauche, j’ai une cage vide, une basse pression qui appelle l’air.
+— Et alors ?
+— Alors, dès que j’ouvre la vanne, l’air de la haute pression se rue vers la basse pression pour respirer ! C’est ce grand voyage de l’air qu’on appelle le vent. </p>
+<p>Le Petit Prince monta sur le soufflet et regarda l’espace entre les deux cages. Il imagina la flèche de pression. Elle pointait vers la cage où l’air était serré. </p>
+<p>— Le vent est un grand soupir, dit le Petit Prince. L’air qui est trop serré veut simplement aller rendre visite à l’air qui est seul. Le vent, c’est l’histoire d’une rencontre entre ce qui est trop plein et ce qui est trop vide. </p>
+<p>Le Régulateur s’arrêta une seconde, surpris.
+— C’est une jolie façon de voir la physique de l’atmosphère. Mais n’oublie pas que la planète tourne, et que ma flèche se tord !
+— La nature aime les lignes droites, mais elle danse quand on la fait tourner, répondit le Petit Prince. </p>
+<p>Il quitta la planète du vent en se disant que la terre, le feu et l’air racontaient tous la même histoire : celle de petites flèches invisibles qui dessinent des pentes, et de grands flux généreux qui courent pour remettre le monde en paix.</p>
+<p>Le Petit Prince s’assit à côté de moi sur le sable, tenant toujours son dessin de la colline. Ses yeux d’or brillaient de curiosité. </p>
+<p>— Tu m’as montré les flèches qui indiquent le chemin, dit-il. Mais comment les grandes personnes font-elles pour savoir si la flèche est grande ou petite ? Comment font-elles pour mesurer l’élan ? </p>
+<p>Je souris. Pour une fois, les manies des grandes personnes allaient lui sembler pleines de poésie. Je pris un petit bâton et commençai à tracer des repères dans le sable. </p>
+<h3 id="i.-la-pente-d%E2%80%99une-route-%3A-le-secret-du-pas-en-avant" tabindex="-1">I. La pente d’une route : Le secret du pas en avant</h3>
+<p>— Imagine, lui dis-je, que tu marches sur une route qui monte vers les étoiles. Pour mesurer sa pente — sa dérivée —, les grandes personnes font un petit jeu. Elles font un pas géant vers l’avant, exactement de <strong>un mètre</strong>. </p>
+<p>Il fronça les sourcils.
+— Un pas en avant ? Mais la route monte !
+— Justement. Tu fais un pas en avant tout droit, comme si tu traversais la montagne comme un fantôme. Et ensuite, tu regardes de combien de centimètres tu as dû <strong>grimper vers le ciel</strong> pour retrouver le vrai goudron de la route. </p>
+<p>Je dessinais une marche d’escalier dans le sable : </p>
+<p>Pente=La hauteur gagnée (le pas vers le ciel)La distance avancée (le pas en avant)Pente equals the fraction with numerator La hauteur gagnée (le pas vers le ciel) and denominator La distance avancée (le pas en avant) end-fraction
+Pente=La hauteur gagnée (le pas vers le ciel)La distance avancée (le pas en avant)
+ </p>
+<p>— Si tu avances de 100 centimètres et que tu as grimpé de 10 centimètres, la pente est de 10 %. La flèche penche un peu. Si tu as dû grimper de 50 centimètres pour un seul pas en avant, la route est très courageuse, la pente est de 50 %. Calculer la pente, c’est simplement comparer la hauteur du ciel à la distance de la Terre. </p>
+<h3 id="ii.-le-d%C3%A9bit-du-robinet-%3A-le-secret-du-sablier" tabindex="-1">II. Le débit du robinet : Le secret du sablier</h3>
+<p>Le Petit Prince regarda mon dessin d’escalier, puis il pensa à sa rose.
+— Sur ma planète, j’ai un petit arrosoir. Quand j’ouvre le robinet, l’eau coule. Comment mesurer son débit ? </p>
+<p>— C’est le secret du temps, répondis-je. Les grandes personnes prennent un seau gradué et un sablier. Elles ouvrent le robinet et laissent le sable s’écouler pendant exactement <strong>une seconde</strong>. Puis, elles ferment le robinet. </p>
+<p>Je dessinais une goutte d’eau à côté d’une horloge : </p>
+<p>Débit=Le volume d′eau récolté (en litres)Le temps qui a passé (en secondes)Débit equals the fraction with numerator Le volume d prime eau récolté (en litres) and denominator Le temps qui a passé (en secondes) end-fraction
+Débit=Le volume d′eau récolté (en litres)Le temps qui a passé (en secondes)
+ </p>
+<p>— Le débit, c’est la dérivée du volume par rapport au temps. Si en une seconde le seau a récolté un demi-litre, le débit est d’un demi-litre par seconde. Si le robinet est en colère et qu’il remplit trois litres en une seule seconde, la flèche du débit est immense. C’est l’histoire de la générosité du robinet pour chaque battement de cœur du temps. </p>
+<h3 id="iii.-la-vitesse-de-la-voiture-%3A-le-secret-de-la-ligne-droite" tabindex="-1">III. La vitesse de la voiture : Le secret de la ligne droite</h3>
+<p>— Et pour les voitures des grandes personnes ? demanda-t-il. Celles qui courent sur les routes sans jamais s’arrêter pour regarder les fleurs ? </p>
+<p>— C’est la même magie, petit bonhomme. Imagine une voiture qui roule. Pour connaître sa vitesse à un instant précis, on fige le monde pendant une minuscule seconde, comme une photographie. On regarde <strong>la distance</strong> que la voiture a réussi à dévorer pendant cette petite seconde. </p>
+<p>Je traçai une ligne droite avec une petite voiture au bout : </p>
+<p>Vitesse=La distance parcourue (en mètres)Le temps écoulé (en secondes)Vitesse equals the fraction with numerator La distance parcourue (en mètres) and denominator Le temps écoulé (en secondes) end-fraction
+Vitesse=La distance parcourue (en mètres)Le temps écoulé (en secondes)
+ </p>
+<p>— La vitesse est la dérivée de la distance. Si la voiture parcourt 30 mètres en une seconde, elle va vite. Si elle ne parcourt qu’un centimètre, elle prend son temps, elle regarde peut-être un renard sur le bord de la route. </p>
+<p>Le Petit Prince resta silencieux, regardant les trois formules tracées dans le sable. </p>
+<p>— Au fond, murmura-t-il, le secret est toujours le même. Pour connaître la flèche, les grandes personnes divisent ce qui change par ce qui avance. La hauteur par l’espace, l’eau par le temps, la distance par les secondes… </p>
+<p>— C’est exactement cela, dis-je, émerveillé. Une dérivée, c’est toujours <strong>une division du changement</strong>. </p>
+<p>— C’est une idée très propre, conclut-il en se levant. Les grandes personnes n’ont pas toujours tort, quand elles s’arrêtent pour mesurer les battements de cœur du monde.</p>

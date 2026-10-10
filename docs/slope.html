@@ -1,0 +1,1201 @@
+<style id="tp-md-references-styles" data-tp-markdown-style="tp-md-references-styles">
+.tp-md-reference-link {
+  position: relative;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.tp-md-note-ref-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.tp-md-note-ref {
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.tp-md-note-ref .tp-md-reference-link {
+  text-decoration: none;
+}
+
+.tp-md-reference-tooltip {
+  position: fixed;
+  z-index: 1000;
+
+  display: none;
+
+  inline-size: max-content;
+  max-inline-size: min(32rem, calc(100vw - 2rem));
+  max-block-size: calc(100vh - 2rem);
+
+  overflow: auto;
+
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: normal;
+
+  background: Canvas;
+  color: CanvasText;
+
+  border: 1px solid
+    color-mix(in srgb, CanvasText 20%, transparent);
+
+  box-shadow:
+    0 0.5rem 1.5rem rgb(0 0 0 / 0.2);
+
+  white-space: normal;
+  overflow-wrap: break-word;
+
+  text-align: start;
+
+  pointer-events: none;
+}
+
+.tp-md-reference-tooltip[data-open='true'] {
+  display: block;
+}
+
+.tp-md-reference-link:hover .tp-md-reference-tooltip,
+.tp-md-reference-link:focus .tp-md-reference-tooltip,
+.tp-md-note-ref-wrap:hover > .tp-md-reference-tooltip,
+.tp-md-note-ref-wrap:focus-within > .tp-md-reference-tooltip,
+.tp-md-reference-tooltip[data-open='true'] {
+  display: block;
+}
+
+.tp-md-reference-tooltip p {
+  margin-block: 0.5rem;
+}
+
+.tp-md-reference-tooltip p:first-child {
+  margin-block-start: 0;
+}
+
+.tp-md-reference-tooltip p:last-child {
+  margin-block-end: 0;
+}
+
+.tp-md-bibliography,
+.tp-md-glossary,
+.tp-md-notes {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+  align-items: start;
+}
+
+.tp-md-bibliography dt,
+.tp-md-glossary dt,
+.tp-md-notes dt,
+.tp-md-bibliography dd,
+.tp-md-glossary dd,
+.tp-md-notes dd {
+  margin: 0;
+}
+
+.tp-md-bibliography dt,
+.tp-md-glossary dt,
+.tp-md-notes dt {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tp-md-bibliography dd,
+.tp-md-glossary dd,
+.tp-md-notes dd {
+  min-inline-size: 0;
+}
+
+.tp-md-bibliography dd > :first-child,
+.tp-md-glossary dd > :first-child,
+.tp-md-notes dd > :first-child {
+  margin-block-start: 0;
+}
+
+.tp-md-bibliography dd > :last-child,
+.tp-md-glossary dd > :last-child,
+.tp-md-notes dd > :last-child {
+  margin-block-end: 0;
+}
+
+.tp-md-index dl {
+  margin: 0;
+}
+
+.tp-md-index dt {
+  font-weight: 600;
+}
+
+.tp-md-index dd {
+  margin-inline-start: 1.5rem;
+}
+
+.tp-md-index a {
+  text-decoration: none;
+}
+
+.tp-md-index-link {
+  position: relative;
+  font-weight: 400;
+}
+
+.tp-md-index-tooltip {
+  position: fixed;
+  z-index: 1000;
+  display: none;
+
+  inline-size: max-content;
+  max-inline-size: min(40rem, calc(100vw - 2rem));
+  max-block-size: calc(100vh - 2rem);
+
+  overflow: auto;
+  padding: 0.75rem;
+  border: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+  border-radius: 0.5rem;
+
+  background: Canvas;
+  color: CanvasText;
+
+  box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.2);
+}
+
+.tp-md-index-tooltip[data-open='true'] {
+  display: block;
+}
+
+.tp-md-index-tooltip [data-tp-md-index-preview] {
+  max-block-size: 20rem;
+  overflow: hidden;
+}
+
+/* listof */
+.tp-md-listof {
+  margin-block: 1rem;
+}
+
+.tp-md-listof-list {
+  margin-block: 0;
+}
+
+.tp-md-listof-link {
+  position: relative;
+  text-decoration: none;
+}
+
+.tp-md-listof-tooltip {
+  position: fixed;
+  z-index: 1000;
+  display: none;
+
+  inline-size: max-content;
+  max-inline-size: min(40rem, calc(100vw - 2rem));
+  max-block-size: calc(100vh - 2rem);
+
+  overflow: auto;
+  overscroll-behavior: contain;
+
+  padding: 0.75rem;
+  border: 1px solid
+    color-mix(in srgb, CanvasText 20%, transparent);
+  border-radius: 0.5rem;
+
+  background: Canvas;
+  color: CanvasText;
+
+  box-shadow:
+    0 0.5rem 1.5rem rgb(0 0 0 / 0.2);
+}
+
+.tp-md-listof-tooltip table {
+  max-inline-size: 100%;
+}
+
+.tp-md-listof-tooltip :is(table, pre, code) {
+  overflow: auto;
+}
+
+.tp-md-listof-tooltip[data-open='true'] {
+  display: block;
+}
+
+.tp-md-listof-tooltip [data-tp-md-listof-preview] {
+  max-block-size: 20rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.tp-md-listof-tooltip [data-tp-md-listof-preview]::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 3rem;
+  background: linear-gradient(transparent, Canvas);
+  pointer-events: none;
+}
+</style>
+<style id="tp-md-page-nav-styles" data-tp-markdown-style="tp-md-page-nav-styles">
+.tp-md-page-nav {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    minmax(0, 1fr);
+
+  gap: 1rem;
+  align-items: center;
+
+  margin-block-start: 3rem;
+  padding-block-start: 1rem;
+
+  border-block-start:
+    1px solid
+    color-mix(
+      in srgb,
+      CanvasText 15%,
+      transparent
+    );
+}
+
+.tp-md-page-nav a {
+  text-decoration: none;
+}
+
+.tp-md-page-nav-prev {
+  justify-self: start;
+}
+
+.tp-md-page-nav-top {
+  justify-self: center;
+}
+
+.tp-md-page-nav-next {
+  justify-self: end;
+  text-align: end;
+}
+
+.tp-md-page-nav-placeholder {
+  min-inline-size: 0;
+}
+</style>
+<style id="tp-md-toc-styles" data-tp-markdown-style="tp-md-toc-styles">
+details[data-markdown-toc] {
+  background: color-mix(in srgb, Canvas 94%, CanvasText 6%);
+  border: 1px solid color-mix(in srgb, CanvasText 12%, transparent);
+  backdrop-filter: blur(8px);
+  position: relative;
+  z-index: 20;
+}
+
+details[data-markdown-toc] ul {
+  margin-block: 0;
+}
+
+details[data-markdown-toc] li {
+  margin-block: 0.1rem;
+}
+
+details[data-markdown-toc] ul[data-toc-numbered] {
+  list-style: none;
+  padding-inline-start: 1rem;
+}
+
+details[data-markdown-toc] ul[data-toc-numbered] ul[data-toc-numbered] {
+  padding-inline-start: 1rem;
+}
+
+.tp-md-toc-aside[data-markdown-toc-position='end'] {
+  float: inline-end;
+  inline-size: min(18rem, 35%);
+  margin-inline-start: 1rem;
+  margin-block: 0 1rem;
+  border-left: none;
+  position: relative;
+  z-index: 20;
+}
+
+.tp-md-toc-aside[data-markdown-toc-position='end'] details[data-markdown-toc] {
+  position: sticky;
+  inset-block-start: 1rem;
+  z-index: 20;
+}
+
+.tp-md-toc-aside[data-markdown-toc-position='end'] details[data-markdown-toc][open] {
+  z-index: 100;
+}
+
+@media (max-width: 60rem) {
+  .tp-md-toc-aside[data-markdown-toc-position='end'] {
+    float: none;
+    inline-size: auto;
+    margin-inline-start: 0;
+  }
+
+  .tp-md-toc-aside[data-markdown-toc-position='end'] details[data-markdown-toc] {
+    position: static;
+  }
+}
+</style>
+<style id="tp-md-layout-styles" data-tp-markdown-style="tp-md-layout-styles">
+.stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--layout-space, 0.5rem);
+}
+
+.stack > * {
+  margin-block: 0;
+}
+
+.stack > * + * {
+  margin-block-start: var(--layout-space, 0.5rem);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-space, 0.5rem);
+  justify-content: var(--cluster-justify, flex-start);
+  align-items: var(--cluster-align, center);
+}
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-space, 0.5rem);
+  --switcher-limit: attr(limit number, 2);
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--switcher-threshold, 40rem) - 100%) * 999);
+}
+
+
+.switcher > tp-l-system {
+  flex: 1 1 18rem;
+  min-inline-size: 0;
+}
+
+.switcher > tp-l-system .tp-l-system-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* important */
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  inline-size: 100%;
+}
+
+.switcher > tp-l-system .tp-l-system-svg,
+.switcher > tp-l-system svg {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+
+.switcher.feature-list > article {
+  flex: 0 0 250px;
+}
+.switcher.code-list > article {
+  flex: 0 0 400px;
+}
+
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--layout-space, 0.5rem);
+}
+
+.sidebar > :first-child {
+  flex-basis: var(--sidebar-width, 10rem);
+  flex-grow: 1;
+}
+
+.sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: var(--sidebar-content-min, 70%);
+}
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  min-block-size: var(--cover-min-block-size, 100vh);
+  padding: var(--cover-padding, 1rem);
+}
+
+.cover > * {
+  margin-block: var(--layout-space, 0.5rem);
+}
+
+.cover > :first-child:not(.centered) {
+  margin-block-start: 0;
+}
+
+.cover > :last-child:not(.centered) {
+  margin-block-end: 0;
+}
+
+.cover > .centered {
+  margin-block: auto;
+}
+
+.center {
+  box-sizing: content-box;
+  max-inline-size: var(--center-max-inline-size, 60rem);
+  margin-inline: auto;
+  padding-inline: var(--center-padding, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--layout-space, 0.5rem);
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(var(--grid-min, 16rem), 100%), 1fr)
+  );
+}
+
+.reel {
+  display: flex;
+  gap: var(--layout-space, 0.5rem);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-color: currentColor transparent;
+}
+
+.reel > * {
+  flex: 0 0 var(--reel-item-width, auto);
+}
+
+.reel > img {
+  block-size: 100%;
+  flex-basis: auto;
+  width: auto;
+}
+
+.reel > * + * {
+  margin-inline-start: 1rem;
+}
+
+.reel.overflowing {
+  padding-block-end: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-space, 0.5rem);
+  padding: var(--card-padding, 1rem);
+  border: var(--card-border, 1px solid color-mix(in srgb, CanvasText 18%, transparent));
+  border-radius: var(--card-radius, 0.75rem);
+  background: var(--card-background, Canvas);
+  color: var(--card-color, CanvasText);
+}
+
+.card > :first-child {
+  margin-block-start: 0;
+}
+
+.card > :last-child {
+  margin-block-end: 0;
+}
+</style>
+<style id="tp-md-tables-styles" data-tp-markdown-style="tp-md-tables-styles">
+.tp-md-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  margin-block: 1rem;
+}
+
+.tp-md-table th,
+.tp-md-table td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid color-mix(in srgb, CanvasText 18%, transparent);
+  text-align: start;
+  vertical-align: top;
+}
+
+.tp-md-table th {
+  font-weight: 700;
+  background: color-mix(in srgb, CanvasText 8%, Canvas);
+}
+
+.tp-md-table tbody tr:nth-child(even) {
+  background: color-mix(in srgb, CanvasText 4%, Canvas);
+}
+
+.tp-md-table td.tp-md-table-number {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.tp-md-block-table :where(th, td) > :first-child,
+.tp-md-list-table :where(th, td) > :first-child,
+.tp-md-table :where(td, th) > :first-child {
+  margin-block-start: 0;
+}
+
+.tp-md-block-table :where(th, td) > :last-child,
+.tp-md-list-table :where(th, td) > :last-child,
+.tp-md-table :where(td, th) > :last-child {
+  margin-block-end: 0;
+}
+
+.tp-md-table :where(td, th) :where(ul, ol) {
+  padding-inline-start: 1.5rem;
+  margin-block: 0.5rem;
+}
+
+.tp-md-table :where(td, th) :where(ul, ol) :where(ul, ol) {
+  margin-block: 0.25rem;
+}
+
+table.tp-md-table.tp-md-list-table td ul,
+table.tp-md-table.tp-md-list-table td ol,
+table.tp-md-table.tp-md-list-table th ul,
+table.tp-md-table.tp-md-list-table th ol {
+  list-style-position: outside;
+  padding-inline-start: 2rem;
+  margin-inline-start: 0;
+}
+
+table.tp-md-table.tp-md-list-table td li,
+table.tp-md-table.tp-md-list-table th li {
+  display: list-item;
+  margin-inline-start: 0;
+}
+
+table.tp-md-table.tp-md-list-table td,
+table.tp-md-table.tp-md-list-table th {
+  overflow: visible;
+}
+</style>
+<style id="tp-md-mdviewer-styles" data-tp-markdown-style="tp-md-mdviewer-styles">
+.tp-md-mdviewer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.5rem;
+  margin-block: 1rem;
+  overflow: visible;
+}
+
+.tp-md-mdviewer-toolbar {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  align-items: end;
+  margin-block-end: 0;
+}
+
+.tp-md-mdviewer-toolbar label,
+.tp-md-mdviewer-start-controls label {
+  display: grid;
+  gap: 0.15rem;
+  margin: 0;
+}
+
+.tp-md-mdviewer-toolbar select,
+.tp-md-mdviewer-start-controls select {
+  width: 100%;
+  height: 2.25rem;
+  box-sizing: border-box;
+}
+
+.tp-md-mdviewer-start,
+.tp-md-mdviewer-end,
+.tp-md-mdviewer-source-output,
+.tp-md-mdviewer-output {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.tp-md-mdviewer-start {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  border: 1px solid #d0d7de;
+  border-radius: 0.75rem;
+  background: #fff;
+  overflow: hidden;
+  padding: 0.5rem;
+}
+
+.tp-md-mdviewer-start-controls:empty {
+  display: none;
+}
+
+.tp-md-mdviewer-end {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+  border: 1px solid #d0d7de;
+  border-radius: 0.75rem;
+  background: #fff;
+  overflow: hidden;
+  padding: 0.5rem;
+  & section {
+    margin: 0;
+  }
+}
+
+.tp-md-mdviewer pre {
+  max-inline-size: 100%;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  border-radius: 0.75rem;
+}
+
+.tp-md-mdviewer pre,
+.tp-md-mdviewer code {
+  white-space: pre;
+}
+
+.tp-md-mdviewer pre code {
+  display: block;
+  min-inline-size: max-content;
+  white-space: inherit;
+}
+
+.tp-md-mdviewer-output > pre,
+.tp-md-mdviewer-output pre {
+  max-block-size: none;
+  block-size: auto;
+  height: auto;
+}
+
+.tp-md-mdviewer[data-mdviewer-layout='source'] {
+  grid-template-columns: 1fr;
+}
+
+.tp-md-mdviewer[data-mdviewer-layout='source'] .tp-md-mdviewer-end {
+  display: none;
+}
+
+.tp-md-mdviewer[data-mdviewer-layout='output'] {
+  grid-template-columns: 1fr;
+}
+
+.tp-md-mdviewer[data-mdviewer-layout='output'] .tp-md-mdviewer-start {
+  display: none;
+}
+
+@media (max-width: 60rem) {
+  .tp-md-mdviewer {
+    grid-template-columns: 1fr;
+  }
+
+  .tp-md-mdviewer-toolbar {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+<style id="tp-md-example-styles" data-tp-markdown-style="tp-md-example-styles">
+.tp-md-example {
+  display: block;
+
+  margin-block: 1rem;
+  padding: 1rem;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      CanvasText 18%,
+      transparent
+    );
+
+  border-radius: 0.75rem;
+
+  background:
+    color-mix(
+      in srgb,
+      CanvasText 6%,
+      Canvas
+    );
+}
+
+.tp-md-example-label {
+  margin-block-end: 0.75rem;
+
+  color:
+    color-mix(
+      in srgb,
+      CanvasText 75%,
+      transparent
+    );
+
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.tp-md-example-content > :first-child {
+  margin-block-start: 0;
+}
+
+.tp-md-example-content > :last-child {
+  margin-block-end: 0;
+}
+</style>
+<style id="tp-md-tabs-styles" data-tp-markdown-style="tp-md-tabs-styles">
+.tp-md-tabs {
+  --tp-md-tabs-border-color: var(--tp-tabs-border-color, var(--tp-neutral-stroke-soft));
+  --tp-md-tabs-border-selected-color: var(--tp-tabs-border-selected-color, var(--tp-brand-stroke-soft));
+  --tp-md-tabs-tab-bg: var(--tp-tabs-tab-bg, var(--tp-neutral-fill-softer));
+  --tp-md-tabs-tab-color: var(--tp-tabs-tab-color, var(--tp-text-body));
+  --tp-md-tabs-tab-selected-bg: var(--tp-tabs-tab-selected-bg, var(--tp-paper-color));
+  --tp-md-tabs-tab-selected-color: var(--tp-tabs-tab-selected-color, var(--tp-brand-seed));
+  --tp-md-tabs-panel-bg: var(--tp-tabs-panel-bg, var(--tp-paper-color));
+  display: block;
+  margin-block: 1rem;
+  min-inline-size: 0;
+  width: 100%;
+}
+
+.tp-md-tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  min-inline-size: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tp-md-tabs-tab {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-inline-size: 0;
+  min-block-size: 0;
+  margin: 0;
+  margin-inline-end: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--tp-md-tabs-border-color);
+  border-block-end: none;
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: var(--tp-md-tabs-tab-bg);
+  color: var(--tp-md-tabs-tab-color);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tp-md-tabs-tab:last-child {
+  margin-inline-end: 0;
+}
+
+.tp-md-tabs-tab[aria-selected='true'] {
+  border-color: var(--tp-md-tabs-border-selected-color);
+  background: var(--tp-md-tabs-tab-selected-bg);
+  color: var(--tp-md-tabs-tab-selected-color);
+  font-weight: 600;
+}
+
+.tp-md-tabs-panel {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--tp-md-tabs-border-color);
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: var(--tp-md-tabs-panel-bg);
+}
+
+.tp-md-tabs-panel[hidden] {
+  display: none;
+}
+</style>
+<style id="tp-md-lists-styles" data-tp-markdown-style="tp-md-lists-styles">ul .tp-md-choice-list-item{list-style:none}.tp-md-choice-list-label{vertical-align:middle;align-items:center;gap:.5rem;line-height:1.4;display:inline-flex}.tp-md-choice-list-input{vertical-align:middle;flex:none;block-size:1rem;inline-size:1rem;margin:0}input[type=checkbox],input[type=radio]{transform-origin:50%;transform:scale(1.4)}.tp-md-list{margin:.5rem 0;padding-left:2.5rem}.tp-md-list-lower-alpha{list-style-type:lower-alpha}.tp-md-list-upper-alpha{list-style-type:upper-alpha}.tp-md-list-lower-roman{list-style-type:lower-roman}.tp-md-list-upper-roman{list-style-type:upper-roman}</style>
+<style id="tp-md-htmlviewer-styles" data-tp-markdown-style="tp-md-htmlviewer-styles">
+.tp-htmlviewer {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  margin: 1rem 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.tp-htmlviewer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.5rem;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  align-items: start;
+  justify-items: stretch;
+  overflow: visible;
+}
+
+.tp-htmlviewer-panel {
+  position: relative;
+  min-inline-size: 0;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  border: 1px solid var(--tp-neutral-stroke-soft);
+  border-radius: .75rem;
+  background: var(--tp-paper-color);
+  overflow: hidden;
+}
+
+.tp-htmlviewer-panel-code,
+.tp-htmlviewer-panel-preview {
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+
+.tp-htmlviewer-controls {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--tp-neutral-stroke-soft);
+}
+
+.tp-htmlviewer-controls label {
+  display: grid;
+  gap: 0.15rem;
+  margin-bottom: 0;
+}
+
+.tp-htmlviewer-controls select {
+  inline-size: 100%;
+  block-size: 2.5rem;
+  box-sizing: border-box;
+}
+
+.tp-htmlviewer-toolbar {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  z-index: 3;
+  display: flex;
+  gap: .375rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.tp-htmlviewer-copy-btn {
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  min-inline-size: 1.75rem;
+  min-block-size: 1.75rem;
+  padding: 0;
+  border-radius: .5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--tp-neutral-on-paper-color, currentColor);
+  backdrop-filter: blur(2px);
+  opacity: .95;
+}
+
+.tp-htmlviewer-copy-btn svg {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.tp-htmlviewer-source-output,
+.tp-htmlviewer-output {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.tp-htmlviewer-source-output {
+  position: relative;
+}
+
+.tp-htmlviewer-source-output pre,
+.tp-htmlviewer-output pre {
+  max-inline-size: 100%;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  border-radius: 0.75rem;
+}
+
+.tp-htmlviewer-source-output pre code,
+.tp-htmlviewer-output pre code {
+  display: block;
+  min-inline-size: max-content;
+  white-space: pre;
+}
+
+.tp-htmlviewer-frame {
+  display: block;
+  inline-size: 100%;
+  max-inline-size: 100%;
+  min-block-size: 0;
+  border: 0;
+  background: var(--tp-paper-color);
+  border-radius: inherit;
+}
+
+.tp-htmlviewer-grid[data-htmlviewer-layout='source'] {
+  grid-template-columns: 1fr;
+}
+
+.tp-htmlviewer-grid[data-htmlviewer-layout='source'] .tp-htmlviewer-panel-preview {
+  display: none;
+}
+
+.tp-htmlviewer-grid[data-htmlviewer-layout='output'] {
+  grid-template-columns: 1fr;
+}
+
+.tp-htmlviewer-grid[data-htmlviewer-layout='output'] .tp-htmlviewer-source-output {
+  display: none;
+}
+
+@media (max-width: 60rem) {
+  .tp-htmlviewer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+<h1 id="une-pente" tabindex="-1">Une pente</h1>
+<p>Sur les routes, on peut voir parfois : « attention, descente de 10 % ». Cela veut dire que, lorsqu’on parcourt une distance de 100 mètres (mesurés sur la carte), on descend de 10 mètres en altitude. La pente de la route est de 10 %, c’est-à-dire <tp-math><code>\frac{10}{100}</code></tp-math>, c’est-à-dire <tp-math><code>0.1</code></tp-math>.</p>
+<p>En fait, pour distinguer les descentes des montées, on dira qu’en descente la pente est de <tp-math><code>-0.1</code></tp-math> et qu’en montée elle est de <tp-math><code>0.1</code></tp-math>. C’est un des aspects de la notion de dérivée : en gros, la dérivée du profil de la route (les altitudes), c’est la pente.</p>
+<tp-multi-choice-question random answer="1,2">
+  <dl>
+<dt>Title</dt>
+<dd>Pente de +5%</dd>
+<dt>Prompt</dt>
+<dd>Laquelle, ou lesquelles, de ces affirmations représente(nt) une pente de +5% ?</dd>
+<dt>Form</dt>
+<dd>
+<ul data-choice-list="tp-md-choice-list-1">
+<li>On monte de 50 mètres sur une distance de 1000 mètres</li>
+<li>On monte de 5 mètres sur une distance de 100 mètres</li>
+<li>On descend de 5 mètres sur une distance de 100 mètres</li>
+<li>On descend de 50 mètres sur une distance de 1000 mètres</li>
+</ul>
+</dd>
+<dt>Feedback</dt>
+<dd>
+<ul data-choice-list="tp-md-choice-list-2">
+<li><tp-math><code>\frac{50}{1000} = 0.5 = 5\%</code></tp-math></li>
+<li><tp-math><code>\frac{5}{100} = 0.5 = 5\%</code></tp-math></li>
+<li>On cherche une pente <em>positive</em> de +5%.</li>
+<li>On cherche une pente <em>positive</em> de +5%.</li>
+</ul>
+</dd>
+<dt>Solution</dt>
+<dd>
+<p>Par convention, une montée correspond à un pourcentage positif, une descente à un pourcentage négatif.
+Ici, on cherche une pente à pourcentage positif (+5%) donc une montée.</p>
+<p>Pour calculer les pourcentages respectifs des deux montées proposées (<em>On monte de…</em>), on divise la hauteur d’élévation par la distance parcourue : <tp-math><code>\frac{50}{1000}</code></tp-math> dans un cas et <tp-math><code>\frac{5}{100}</code></tp-math> dans l’autre cas.<br>
+Or ces deux rapports sont égaux et valent 5% :<br>
+<tp-math><code>\frac{50}{1000}=\frac{5\cdot 10}{100\cdot 10} = \frac{5}{100}= 0.5 = 5\%</code></tp-math>.</p>
+<p>Les deux montées proposées correspondent à la bonne réponse.</p>
+</dd>
+</dl>
+
+  </tp-multi-choice-question>
+  <p class="tp-red-style">— Mais cette notion ne s’applique que si la pente est constante, c’est-à-dire si le profil est droit (rectiligne) ! Que se passe-t-il si le profil est courbe ? En chaque point de la route, la pente est différente ! Comment calculer la pente en chaque point ?</p>
+<p>Eh bien, on triche un peu. On fait semblant de croire que la route a un profil droit dans une petite portion autour du point.
+C’est effectivement à peu près le cas si le profil n’est pas trop fortement courbé, et si on se restreint à des points très voisins.</p>
+<p>On calcule alors la pente comme précédemment, mais sur une toute petite distance.
+Par exemple sur la route précédente, quand on avance de 10 cm, on descend de 1 cm, quand on avance de 1 cm, on descend de 1 mm.</p>
+<p class="tp-red-style">— Mais on ne peut pas mesurer des distances aussi petites avec précision, et sur une route, en plus !</p>
+<p>C’est là qu’il faut sortir de la physique pour faire des mathématiques, qui raisonnent sur des objets abstraits, « idéaux », sans se soucier des conditions pratiques de mesure.</p>
+<p>Pour simplifier, supposons que la route n’a pas de virages.
+Il faut supposer aussi qu’on connaît exactement le profil de la route, par exemple sous forme de formule.
+Admettons qu’à partir d’un certain point considéré comme origine (le kilomètre 0) on sache calculer exactement l’altitude de tout point de la route, en repérant chaque point par sa distance (en mètres) au point origine (distance sur la carte, c’est-à-dire en projection dans une vue de dessus comme dans Google Earth ou Geoportail).</p>
+<p>Par exemple, supposons que l’altitude soit le millième du carré de la distance (il vaut mieux ne pas aller trop loin sur une route comme ça…).
+Quelle serait la pente au point qui se trouve à une distance de 50 mètres de l’origine ?</p>
+<p class="tp-red-style">— Déjà l’altitude serait de 2.5. Mais en quelle unité, en mètres carrés ? Ça n’a pas de sens !</p>
+<p>Pardon, pour être plus précis j’aurais dû dire : si la distance vaut <tp-math><code>x</code></tp-math> mètres, l’altitude vaut <tp-math><code>\frac{x^2}{1000}</code></tp-math> mètres.</p>
+<p>Donc l’altitude est de 2,5 mètres.
+Avançons maintenant de 10 cm.
+La distance devient <tp-math><code>50.1</code></tp-math>, l’altitude devient <tp-math><code>\frac{50.1^2}{1000}</code></tp-math>, qui vaut <tp-math><code>2.51001</code></tp-math> (valeur exacte).
+Donc on a monté de <tp-math><code>0.01001</code></tp-math> mètre.
+Donc sur cette petite portion de 10 cm, en admettant que le profil est rectiligne (ce qui est faux), on obtient une pente de <tp-math><code>\frac{0.01001}{0.1}=0.1001</code></tp-math> (on calcule le rapport : <tp-math><code>\frac{\text{variation d’altitude}}{\text{variation de distance}}</code></tp-math>).</p>
+<p>En langage de code de la route, c’est une pente de 10 % (à peu près).</p>
+<p class="tp-red-style">— Mais c’est arbitraire d’avoir choisi 10 cm ! Et si j’avais voulu choisir autre chose, 20 cm par exemple, ou 1 cm, on n’aurait pas trouvé la même pente !</p>
+<p>Non c’est vrai, pour 20 cm on trouve une pente de <tp-math><code>0.1002</code></tp-math> et pour 1 cm on trouve <tp-math><code>0.10001</code></tp-math> (et pour 1 m on trouve <tp-math><code>0.101</code></tp-math>).
+Il ne s’agit en fait que d’une <em>pente moyenne</em> sur la portion de route considérée.</p>
+<p class="tp-red-style">— Mais alors quelle est la VRAIE pente au point considéré ?</p>
+<p>On ne va pas l’obtenir directement, mais de plus en plus précisément, en prenant une portion de route de plus en plus petite :</p>
+<table class="tp-md-table">
+<thead>
+<tr>
+<th>Portion</th>
+<th>1</th>
+<th>0.1</th>
+<th>0.01</th>
+<th>0.001</th>
+<th>0.0001</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pente</td>
+<td class="tp-md-table-number">0.101</td>
+<td class="tp-md-table-number">0.1001</td>
+<td class="tp-md-table-number">0.10001</td>
+<td class="tp-md-table-number">0.100001</td>
+<td class="tp-md-table-number">0.1000001</td>
+</tr>
+</tbody>
+</table>
+<p>On peut démontrer plus généralement que, si la portion vaut <tp-math><code>10^{-n}</code></tp-math> (ce qui peut être très petit quand <tp-math><code>n</code></tp-math> est grand), alors la pente vaut <tp-math><code>0{,}1+\frac{10^{-n}}{1000}</code></tp-math>.
+Donc la pente se rapproche d’aussi près qu’on veut de <tp-math><code>0.1</code></tp-math> pourvu qu’on choisisse une portion suffisamment petite.</p>
+<p>On considérera alors cette valeur de <tp-math><code>0.1</code></tp-math> comme la « vraie » valeur de la pente au point considéré. C’est la valeur <em>limite</em> vers laquelle tend la pente moyenne quand on considère des portions de route de plus en plus petites.</p>
+<tp-python-viewer-question src="examples/slope.init.py" test="examples/slope.test.py">
+  <dl>
+<dt>Title</dt>
+<dd>Calculs de pente</dd>
+<dt>Prompt</dt>
+<dd>
+<p>Définir une fonction Python <code>slope(f,x0,x1)</code> qui calcule le taux d’accroissement d’une fonction <tp-math><code>f</code></tp-math> entre <tp-math><code>x_{0}</code></tp-math> et <tp-math><code>x_{1}</code></tp-math>.</p>
+<p>Utiliser cette fonction pour retrouver (à peu près) les valeurs de la pente de la route définie par la fonction <tp-math><code>\frac{x^2}{1000}</code></tp-math>, à partir de l’abscisse <tp-math><code>x_0=50</code></tp-math> et pour des portions de route de plus en plus petites. On donnera à la portion la valeur de <tp-math><code>10^{-n}</code></tp-math> pour <tp-math><code>n \in [0,6]</code></tp-math>.</p>
+</dd>
+<dt>Solution</dt>
+<dd>
+<tp-markdown src="/derivatives/docs/examples/slope.solution.md">
+  
+  </tp-markdown>
+  </dd>
+</dl>
+
+  </tp-python-viewer-question>
+  <p><span class="tp-red-style">— Et si on veut calculer la pente en un autre point, par exemple au point qui se trouve à 1 km de l’origine, il faut refaire tous ces calculs ?</span></p>
+<p>Heureusement non, parce que les mathématiciens les ont faits une fois pour toutes et les ont résumés dans des formules (du moins lorsque la formule qui définit le profil de la route n’est pas trop compliquée).</p>
+<p>Ici, par exemple, le profil de la route est de la forme <tp-math><code>cx^2</code></tp-math>, avec <tp-math><code>c=\frac{1}{1000}</code></tp-math>.
+Un théorème<span class="tp-md-note-ref-wrap"><sup class="tp-md-note-ref"><a href="#note-1" class="tp-md-reference-link tp-md-note-link" data-note-ref="note-1">[1]</a></sup><span class="tp-md-reference-tooltip" role="tooltip">Pour <tp-math><code>f(x)=x^2</code></tp-math>, la définition de la dérivée <tp-math><code>f'</code></tp-math> en <tp-math><code>a</code></tp-math> est :<br>
+<tp-math><code>\displaystyle f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}</code></tp-math>.<br>
+On remplace la fonction par son expression, puis on développe :<br>
+<tp-math><code>\displaystyle \frac{(a+h)^2-a^2}{h}=\frac{a^2+2ah+h^2-a^2}{h}=\frac{2ah+h^2}{h}=2a+h</code></tp-math><br>
+La simplification est permise car <strong><tp-math><code>h\neq 0</code></tp-math></strong> : il tend vers zéro, sans être nul dans ce quotient.<br>
+En passant à la limite :
+<tp-math><code>\displaystyle f'(a)=\lim_{h\to 0}(2a+h)=2a</code></tp-math><br>
+Ainsi, pour tout réel <tp-math><code>x</code></tp-math> :
+<tp-math><code>\boxed{(x^2)'=2x}</code></tp-math><br>
+Pour le profil de la route défini par <tp-math><code>f(x) = cx^2</code></tp-math>, on a : <tp-math><code>f'(x) = (cx^2)' = c(x^2)' = c(2x) = 2cx</code></tp-math>.</span></span> dit alors que la pente correspondant au point <tp-math><code>x</code></tp-math> est <tp-math><code>2cx</code></tp-math>.
+Vérifions avec l’exemple précédent : <tp-math><code>2\times\frac{1}{1000}\times 50=\frac{100}{1000}=0{,}1</code></tp-math>.
+C’est bien ça.</p>
+<p>Pour 1 km, <tp-math><code>x=1000</code></tp-math> mètres, donc la pente est <tp-math><code>2\times\frac{1}{1000}\times 1000=2</code></tp-math>, c’est-à-dire une pente de 200 %.
+Une telle route ferait un angle de plus de 60 degrés avec l’horizontale, ce n’est pas réaliste.</p>
+<tp-fill-blank-question>
+  <dl>
+<dt>Answers</dt>
+<dd>25</dd>
+<dt>Title</dt>
+<dd>Où se situe la pente à +5% ?</dd>
+<dt>Prompt</dt>
+<dd>
+<p>On considère une route dont le profil est de la forme <tp-math><code>cx^2</code></tp-math> avec <tp-math><code>c = \frac{1}{1000}</code></tp-math>.
+Il s’agit d’une route qui change de pente continuellement.</p>
+<p>A quelle distance de l’origine se situe la pente de +5% ?</p>
+</dd>
+<dt>Form</dt>
+<dd>La pente de +5% se situe à <tp-textfield clearable="" placeholder="un nombre"></tp-textfield> mètres de l’origine.</dd>
+<dt>Feedback</dt>
+<dd>Un théorème<span class="tp-md-note-ref-wrap"><sup class="tp-md-note-ref"><a href="#note-1" class="tp-md-reference-link tp-md-note-link" data-note-ref="note-1">[1]</a></sup><span class="tp-md-reference-tooltip" role="tooltip">Pour <tp-math><code>f(x)=x^2</code></tp-math>, la définition de la dérivée <tp-math><code>f'</code></tp-math> en <tp-math><code>a</code></tp-math> est :<br>
+<tp-math><code>\displaystyle f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}</code></tp-math>.<br>
+On remplace la fonction par son expression, puis on développe :<br>
+<tp-math><code>\displaystyle \frac{(a+h)^2-a^2}{h}=\frac{a^2+2ah+h^2-a^2}{h}=\frac{2ah+h^2}{h}=2a+h</code></tp-math><br>
+La simplification est permise car <strong><tp-math><code>h\neq 0</code></tp-math></strong> : il tend vers zéro, sans être nul dans ce quotient.<br>
+En passant à la limite :
+<tp-math><code>\displaystyle f'(a)=\lim_{h\to 0}(2a+h)=2a</code></tp-math><br>
+Ainsi, pour tout réel <tp-math><code>x</code></tp-math> :
+<tp-math><code>\boxed{(x^2)'=2x}</code></tp-math><br>
+Pour le profil de la route défini par <tp-math><code>f(x) = cx^2</code></tp-math>, on a : <tp-math><code>f'(x) = (cx^2)' = c(x^2)' = c(2x) = 2cx</code></tp-math>.</span></span> dit que la pente correspondant au point <tp-math><code>x</code></tp-math> est <tp-math><code>2cx</code></tp-math>.</dd>
+<dt>Solution</dt>
+<dd>
+<p>Pour un profil de la forme <tp-math><code>cx^2</code></tp-math>, un théorème<span class="tp-md-note-ref-wrap"><sup class="tp-md-note-ref"><a href="#note-1" class="tp-md-reference-link tp-md-note-link" data-note-ref="note-1">[1]</a></sup><span class="tp-md-reference-tooltip" role="tooltip">Pour <tp-math><code>f(x)=x^2</code></tp-math>, la définition de la dérivée <tp-math><code>f'</code></tp-math> en <tp-math><code>a</code></tp-math> est :<br>
+<tp-math><code>\displaystyle f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}</code></tp-math>.<br>
+On remplace la fonction par son expression, puis on développe :<br>
+<tp-math><code>\displaystyle \frac{(a+h)^2-a^2}{h}=\frac{a^2+2ah+h^2-a^2}{h}=\frac{2ah+h^2}{h}=2a+h</code></tp-math><br>
+La simplification est permise car <strong><tp-math><code>h\neq 0</code></tp-math></strong> : il tend vers zéro, sans être nul dans ce quotient.<br>
+En passant à la limite :
+<tp-math><code>\displaystyle f'(a)=\lim_{h\to 0}(2a+h)=2a</code></tp-math><br>
+Ainsi, pour tout réel <tp-math><code>x</code></tp-math> :
+<tp-math><code>\boxed{(x^2)'=2x}</code></tp-math><br>
+Pour le profil de la route défini par <tp-math><code>f(x) = cx^2</code></tp-math>, on a : <tp-math><code>f'(x) = (cx^2)' = c(x^2)' = c(2x) = 2cx</code></tp-math>.</span></span> dit que la pente correspondant au point <tp-math><code>x</code></tp-math> est <tp-math><code>2cx</code></tp-math>.</p>
+<p>Avec <tp-math><code>c = \frac{1}{1000}</code></tp-math> et la pente <tp-math><code>2cx = 5% = 0.05</code></tp-math>, on obtient :</p>
+<p><tp-math><code>\displaystyle x = \frac{0.05}{2\frac{1}{1000}} = 1000 \frac{0.05}{2} = \frac{50}{2} = 25</code></tp-math>.</p>
+<tp-stack>
+  <p>Vérification sur un intervalle de <tp-math><code>0.2</code></tp-math> autour de <tp-math><code>25</code></tp-math>, de <tp-math><code>24.9</code></tp-math> à <tp-math><code>25.1</code></tp-math> :</p>
+<tp-math><code>\displaystyle\frac{\Delta f}{\Delta x} = \frac{f(25 + 0.1)-f(25 - 0.1)}{25.1 - 24.9} = \frac{(25+0.1)^2 - (25-0.1)^2}{1000\cdot 0.2}</code></tp-math>
+<p>Or : <tp-math><code>(25+0.1)^2 - (25-0.1)^2</code></tp-math> est de la forme : <tp-math><code>(a+b)^2 - (a-b)^2 = (a^2 + 2ab + b^2) - (a^2 - 2ab + b^2) = 4ab</code></tp-math></p>
+<p>Donc : <tp-math><code>\displaystyle\frac{\Delta f}{\Delta x} = \frac{4\cdot 25\cdot 0.1}{1000\cdot 0.2} = \frac{10}{200} = 0.05 = 5%</code></tp-math>.</p>
+<tp-box>
+  <p>La pente de +5% se situe à 25 mètres de l’origine.</p>
+
+  </tp-box>
+  
+  </tp-stack>
+  </dd>
+</dl>
+
+  </tp-fill-blank-question>
+  <p class="tp-red-style">— Finalement, c’est quoi une dérivée ?</p>
+<p>Pour être complet, on doit dire « dérivée d’une fonction », et il faudrait définir précisément ce qu’est une fonction.
+Ici, la fonction c’est le procédé de calcul qui permet de trouver l’altitude <tp-math><code>H</code></tp-math> en fonction de la distance : si la distance est <tp-math><code>x</code></tp-math>, l’altitude est <tp-math><code>H(x) = \frac{x^2}{1000}</code></tp-math>.</p>
+<p>La dérivée d’une fonction de ce type (altitude calculée en fonction de la distance), c’est une autre fonction qui permet de calculer la pente en tout point.
+Ici, si la distance est <tp-math><code>x</code></tp-math>, la pente est <tp-math><code>\frac{x}{500}</code></tp-math>.</p>
+<p class="tp-red-style">— La pente en tout point… donc on peut savoir quelles sont les portions de route qui montent et celles qui descendent.</p>
+<p>Oui, mais pour que les mots « monter » et « descendre » aient une signification il faut bien préciser le sens de parcours : ici on suppose qu’on part du point zéro et qu’on s’en éloigne.
+Il suffit alors d’étudier le signe de la dérivée : partout où la dérivée (la pente) est positive, la route monte et partout où la dérivée est négative la route descend.</p>
+<p class="tp-red-style">— Et donc on peut savoir où il y a des cols rien qu’en connaissant la dérivée !</p>
+<p>Oui, un col se caractérise par le fait qu’on y arrive en montant et qu’on en repart en descendant.
+Du point de vue de la route, c’est un sommet, un maximum.
+Cela se produit si la dérivée est positive avant et négative après.</p>
+<p class="tp-red-style">— Et quelle est la pente au col ?</p>
+<p>Elle est nulle : 0 %.
+Le col est « horizontal » (mais ce n’est qu’en un point).</p>
+<tp-xy-plot>
+  <script type="tp/xy-plot">
+xyFunctionGraph
+  title "Colline"
+  x-axis [0, 2*PI]
+  y-axis [0, 2]
+  points [["A", 1, 0.5*cos(1 - PI) + 1, 10, 10],["B", PI, 1.5], ["C", 4.71, 1]]
+  functions [["Colline", "0.5*cos(x - PI) + 1", [0,2*PI]], 
+    ["Montée","-0.5*sin(1-PI)*(x-1) + 0.5*cos(1 - PI) + 1", [0.4,1.6]],
+    ["Col", "-0.5*sin(PI-PI)*(x-PI) + 0.5*cos(PI - PI) + 1", [2.36, 3.93]],
+    ["Descente", "-0.5*sin(4.71-PI)*(x-4.71) + 0.5*cos(4.71 - PI) + 1", [3.925,5.495]]]
+</script>
+
+  </tp-xy-plot>
+  <hr>
+<dl class="tp-md-notes"><dt id="note-1">[1]</dt><dd data-reference-def="note-1"><p>Pour <tp-math><code>f(x)=x^2</code></tp-math>, la définition de la dérivée <tp-math><code>f'</code></tp-math> en <tp-math><code>a</code></tp-math> est :<br>
+<tp-math><code>\displaystyle f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}</code></tp-math>.<br>
+On remplace la fonction par son expression, puis on développe :<br>
+<tp-math><code>\displaystyle \frac{(a+h)^2-a^2}{h}=\frac{a^2+2ah+h^2-a^2}{h}=\frac{2ah+h^2}{h}=2a+h</code></tp-math><br>
+La simplification est permise car <strong><tp-math><code>h\neq 0</code></tp-math></strong> : il tend vers zéro, sans être nul dans ce quotient.<br>
+En passant à la limite :
+<tp-math><code>\displaystyle f'(a)=\lim_{h\to 0}(2a+h)=2a</code></tp-math><br>
+Ainsi, pour tout réel <tp-math><code>x</code></tp-math> :
+<tp-math><code>\boxed{(x^2)'=2x}</code></tp-math><br>
+Pour le profil de la route défini par <tp-math><code>f(x) = cx^2</code></tp-math>, on a : <tp-math><code>f'(x) = (cx^2)' = c(x^2)' = c(2x) = 2cx</code></tp-math>.</p>
+</dd></dl>
