@@ -129,9 +129,11 @@ var l = class l extends e {
 		return [...new Set(e.length === 0 ? ["en"] : e)];
 	}
 	resolveCurrentLang(e) {
-		let t = this.resolveMarkdownDoc(), n = t === null ? "" : this.readHostRepository(t);
-		if (n !== "") {
-			let t = o(n);
+		let t = this.resolveSinglePage();
+		if (t) return t.documentLanguage || e[0] || "en";
+		let n = this.resolveMarkdownDoc(), r = n === null ? "" : this.readHostRepository(n);
+		if (r !== "") {
+			let t = o(r);
 			for (let n of e) if (this.repositoryForLang(n) === t) return n;
 		}
 		return this.readLangFromPath(e) ?? e[0] ?? "en";
@@ -169,8 +171,13 @@ var l = class l extends e {
 		return t === "" ? e.getAttribute("repository")?.trim() ?? "" : t;
 	}
 	selectLang(e) {
-		let t = this.readLangs(), n = e === "auto" ? this.resolveAutoLang(t) : e, r = this.repositoryForLang(n), i = this.resolveMarkdownDoc();
-		i !== null && i.setAttribute("repository", r), this.updateUrlForRepository(r), this.updateControl(), this.emitChange(e, n, r, i);
+		let t = this.readLangs(), n = e === "auto" ? this.resolveAutoLang(t) : e, r = this.resolveSinglePage();
+		if (r) {
+			r.setDocumentLanguage(n), this.updateControl(), this.emitChange(e, n, "", r);
+			return;
+		}
+		let i = this.repositoryForLang(n), a = this.resolveMarkdownDoc();
+		a !== null && a.setAttribute("repository", i), this.updateUrlForRepository(i), this.updateControl(), this.emitChange(e, n, i, a);
 	}
 	emitChange(e, t, n, r) {
 		this.dispatchEvent(new CustomEvent(l.changeEventName, {
@@ -192,6 +199,10 @@ var l = class l extends e {
 			return;
 		}
 		t.pathname = `${e.replace(/\/+$/, "")}/index.html`, window.history.pushState(null, "", t);
+	}
+	resolveSinglePage() {
+		let e = this.closest(".tp-markup-single-page");
+		return e && typeof e.setDocumentLanguage == "function" ? e : null;
 	}
 	resolveMarkdownDoc() {
 		let e = this.closest("tp-markdown-multi-pages, tp-asciidoc-multi-pages, tp-restructuredtext-multi-pages, tp-html-multi-pages, tp-markup-multi-pages");

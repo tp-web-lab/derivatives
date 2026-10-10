@@ -62,6 +62,7 @@ export declare class TpLang extends TpBase {
     private selectLang;
     private emitChange;
     private updateUrlForRepository;
+    private resolveSinglePage;
     private resolveMarkdownDoc;
     private handleControlClick;
     private handleLangItemClick;

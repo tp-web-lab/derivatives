@@ -23,12 +23,19 @@ Getting started
 
 ### User interactions
 
-Personal annotations are saved per document in this browser's localStorage, without account synchronization. Clearing site data removes them. The [Post-it editor](../post-it-editor/index.md) offers an Annotation language dropdown: adoc, html, md, rst or txt (default). Source and language are saved together; rendered markup is sanitized and scripts are not executed. If a target changes or disappears, use Reattach from the annotations list; no guessed replacement is silently selected. Storage errors are displayed in the editor. Elements inside embedded iframes are outside this page's annotation scope.
+The toolbar is optional. The interactions below are available only when the corresponding controls are displayed. Personal annotations are saved per document in this browser's localStorage, without account synchronization. Clearing site data removes them. The [Post-it editor](../post-it-editor/index.md) offers an Annotation language dropdown: adoc, html, md, rst or txt (default). Source and language are saved together; rendered markup is sanitized and scripts are not executed. If a target changes or disappears, use Reattach from the annotations list; no guessed replacement is silently selected. Storage errors are displayed in the editor. Elements inside embedded iframes are outside this page's annotation scope.
 
 #### Mouse interactions
 
 | Control or gesture | Result |
 | --- | --- |
+| Source repository | Open the linked Git repository in a new tab. |
+| Code | Open or close the document source in a drawer, without replacing the rendered document. |
+| Calculator | Open or close the scientific calculator. |
+| Clock | Read the time; hover to display the date. |
+| Language | Select an available translation of this document. |
+| Color / Theme | Change the brand color or the light/dark appearance. |
+| Fullscreen | Enter or leave fullscreen for this page. |
 | Personal annotations (comment with pencil in the toolbar) | Open the annotation list. Use the large + button to add an annotation, select a document element, enter text and Save. The close icon is at the right of the panel title. |
 | Annotation pin | Click to open the note, or drag it to another document element. Its attachment is saved. |
 | Edit / Reattach / Delete | Update the selected annotation, choose a new target, or remove it from this browser. Each note has pencil (Edit) and delete-outline (Delete) icon buttons in its bottom-right footer. |
@@ -48,17 +55,25 @@ Personal annotations are saved per document in this browser's localStorage, with
 
 ### Author directives
 
-Use `<tp-restructuredtext-single-page>` as shown below.
+Use `label="My document"` to display a title in the center of the toolbar. Its default is an empty string. Changing or removing the label updates only the title, without reloading the document or closing its tools. Without a toolbar, the label is not displayed.
+
+The toolbar is hidden by default. Add `toolbar` (or `toolbar=""`) to display all available controls, or give a comma-separated selection. The toolbar updates immediately without reloading the document. Unknown names and duplicates are ignored.
 
 ```html
-<tp-restructuredtext-single-page></tp-restructuredtext-single-page>
+<tp-restructuredtext-single-page src="guide.rst" toolbar="code,calc,postit,theme,fullscreen" label="My document"></tp-restructuredtext-single-page>
 ```
+
+Set `git="https://github.com/owner/repository"` to add a repository button at the start of the toolbar, before Code. It opens the repository in a new tab. This button is independent of the selection in `toolbar`; an absent or empty `git` hides it. Without a toolbar, no repository button is displayed.
+
+The left group contains `code`, `calc`, `postit`; the right group contains `clock`, `lang`, `color`, `theme`, `fullscreen`, in that order regardless of the order in the attribute. Code displays the original source as text; Calculator opens a separate drawer.
+
+For translated external documents, provide `langs="en,fr,es"`. The first language uses the source directory (for example `guide.md`); the others use subdirectories with the same filename (`fr/guide.md`, `es/guide.md`). With no `langs`, only `en` is assumed and no translation requests are made. The language control is shown only when `lang` is selected and at least two versions are available. It is hidden for inline documents. A static server must return 404 for missing translation files instead of serving a fallback page.
 
 ## Examples
 
 <!-- tp-docgen:example-descriptions:start -->
 Basic usage
-: Inspect the rendered restructuredtext document and use its page navigation controls.
+: Read the rendered restructuredtext document. The toolbar is hidden unless explicitly enabled.
 <!-- tp-docgen:example-descriptions:end -->
 
 ::::::::::::::: tp-tabs
@@ -109,6 +124,7 @@ CSS properties
 <!-- tp-docgen:typedoc:start -->
 [More details…](/api/classes/components_restructuredtext-single-page.TpRestructuredTextSinglePage.html)
 <!-- tp-docgen:typedoc:end -->
+
 
 
 

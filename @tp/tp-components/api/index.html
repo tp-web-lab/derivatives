@@ -60,8 +60,7 @@ as a module. It discovers and loads <code>tp-*</code> components automatically:<
 is a separate step; this candidate does not imply registry availability.</p>
 <h2 id="publishing-the-documentation" class="tsd-anchor-link">Publishing the documentation<a href="#publishing-the-documentation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2>
 <p>The <code>Documentation Pages</code> workflow builds and publishes the site at
-<code>https://tp-web-lab.github.io/tp-components/</code> on pushes to <code>main</code>. Pull requests
-build the artifact without deploying it. Manual runs on <code>main</code> can publish it too.</p>
+<code>https://tp-web-lab.github.io/tp-components/</code> on pushes to <code>main</code>. Manual runs on <code>main</code> can publish it too.</p>
 <p>Before the first deployment, select <strong>Settings → Pages → Build and deployment →
 Source → GitHub Actions</strong> in the repository. The workflow reuses the pinned CI
 workspace; shared packages do not need to be published on npm first.</p>
@@ -76,6 +75,16 @@ URLs to built files and leaves <code>dist/</code> untouched for library consumer
 <code>.pages/</code> mounted at <code>/tp-components/</code> to test it locally; opening HTML through
 <code>file://</code> does not reproduce HTTP loading. A root-domain deployment can use <code>/</code>
 as the preparation argument instead (and must update the workflow accordingly).</p>
+<p>After publication, the workflow publishes the compiled library (without source
+maps) to the <code>runtime</code> branch and commits its revision to
+<code>tp-examples/.github/tp-components-revision</code>. This triggers publication of the
+examples home and derivatives course. Never merge runtime or gh-pages into main.</p>
+<p>The shared setup uses four repository-specific read-only deploy keys:
+<code>TP_UTILITIES_READ_KEY</code>, <code>TP_MARKDOWN_READ_KEY</code>, <code>TP_ASCIIDOC_READ_KEY</code> and
+<code>TP_RESTRUCTUREDTEXT_READ_KEY</code>. Dependencies stay private and pinned. Fork pull
+requests skip jobs that need these credentials. <code>TP_EXAMPLES_UPDATE_KEY</code> grants
+write access only to tp-examples and is used to update its runtime revision.
+GitHub Pages must use GitHub Actions, not the historical gh-pages branch.</p>
 </div></div>
 <div class="col-sidebar">
 <div class="page-menu">
