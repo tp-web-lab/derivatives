@@ -1227,7 +1227,7 @@ mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 Il est d’ailleurs possible de consulter le code source <code>tp-markdown</code> de la page courante en cliquant sur le bouton <tp-icon name="code" variant="neutral"></tp-icon> dans la barre d’outils en haut à gauche de ce document.
 On revient au rendu HTML en cliquant une nouvelle fois sur ce bouton.</p>
 <h2 id="commandes" tabindex="-1">Commandes</h2>
-<p>Les commandes globales, toujours disponibles quelle que soit la page chargée, sont explicitées dans les tableaux suivants.
+<p>Les commandes globales, toujours disponibles par défaut<tp-ref href="^commandes"></tp-ref> quelle que soit la page chargée, sont explicitées dans les tableaux suivants.
 D’autres commandes peuvent être introduites par certains composants.
 Pour connaître les interactions possibles avec un composant, il suffit de taper <kbd>Ctrl</kbd>+<kbd>?</kbd> quand le composant a le focus ou quand la souris le survole, un panneau d’aide s’ouvrira alors.</p>
 <tp-cluster align="flex-start">
@@ -1279,12 +1279,20 @@ Pour connaître les interactions possibles avec un composant, il suffit de taper
 <caption id="tabledesmatires" style="caption-side: bottom">Table des matières</caption>
 <tbody>
 <tr>
+<td><tp-icon size="2em" name="search"></tp-icon></td>
+<td>rechercher dans la table des matières</td>
+</tr>
+<tr>
 <td><tp-icon size="2em" name="arrow-expand-vertical"></tp-icon></td>
 <td>développer tous les niveaux</td>
 </tr>
 <tr>
 <td><tp-icon size="2em" name="arrow-collapse-vertical"></tp-icon></td>
 <td>contracter tous les niveaux</td>
+</tr>
+<tr>
+<td><tp-icon size="2em" name="arrow-expand-horizontal"></tp-icon></td>
+<td>adapter la largeur</td>
 </tr>
 <tr>
 <td><tp-icon size="2em" name="plus-box-outline"></tp-icon>/<tp-icon size="2em" name="minus-box-outline"></tp-icon></td>
@@ -1294,6 +1302,10 @@ Pour connaître les interactions possibles avec un composant, il suffit de taper
 </table>
 
   </tp-cluster>
+  <tp-note ref="commandes">
+  <p>En option, l’auteur du document peut décider de supprimer certaines de ces commandes.</p>
+
+  </tp-note>
   <h2 id="composants" tabindex="-1">Composants</h2>
 <p>Les composants utilisés directement dans l’ensemble du document sont répertoriés ci-dessous.</p>
 <tp-cluster align="flex-start">
